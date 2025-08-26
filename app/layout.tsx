@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NavBar links={["Home", "Movies", "Shows"]} />
+        <NavBar links={["Home", "Movies", "Shows", "About"]} />
         {children}
       </body>
     </html>
