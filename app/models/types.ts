@@ -1,4 +1,4 @@
-interface Movie {
+export interface Movie {
     title: string,
     synopsis: string | null,
     length: number | null,
@@ -11,7 +11,7 @@ interface Movie {
     id: number
 }
 
-interface Show {
+export interface Show {
     title: string,
     synopsis: string | null,
     seasonsNum: number | null,
@@ -23,7 +23,7 @@ interface Show {
     id: number | null
 }
 
-interface Episode {
+export interface Episode {
     title: string,
     synopsis: string | null,
     seasonNum: number | null,
@@ -35,19 +35,19 @@ interface Episode {
     id: number
 }
 
-interface Actor {
+export interface Actor {
     name: string,
     birth: Date | null,
     id: number
 }
 
-interface Director {
+export interface Director {
     name: string,
     birth: Date | null,
     id: number
 }
 
-interface Genre {
+export interface Genre {
     name: string,
     id: number
 }

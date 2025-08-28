@@ -1,0 +1,103 @@
+.carouselWrapper {
+  position: relative;
+  margin-top: 5rem; /* separa del navbar */
+  padding: 0 1rem;
+}
+
+.scroller {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollerContent {
+  display: flex;
+  gap: 1rem;
+}
+
+.card {
+  flex-shrink: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 10rem; /* 160px */
+  background: #f3f4f6;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 1rem;
+}
+
+.cardBody h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardBody p {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0 0 0.75rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.button {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #f9fafb;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  padding: 0.5rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.arrow.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.arrow.active {
+  opacity: 1;
+}
+
+.arrow.left {
+  left: 0.5rem;
+}
+
+.arrow.right {
+  right: 0.5rem;
+}

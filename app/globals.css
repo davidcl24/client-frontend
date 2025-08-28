@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body {
+  overflow-x: hidden;
+}
+
 .navbar {
     list-style-type: none;
     margin: 0;
@@ -8,6 +12,7 @@
     width: 100%;
     background-color: #333;
     position: fixed;
+    z-index: 100000;
 }
 
 .navbar-element {

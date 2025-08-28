@@ -1,24 +1,16 @@
 import { SmallCarousel } from "./carousels";
+import { fetchFromGateway } from "./fetch-data";
+import { Movie, Show } from "./models/types";
 
-export default function Home() {
-  const movie: Movie = {
-    title: "peli prueba",
-    synopsis: null,
-    length: null,
-    release_date: null,
-    genreId: null,
-    posterUrl: "https://es.web.img3.acsta.net/pictures/14/02/19/13/12/391206.jpg",
-    rating: null,
-    isPublished: null,
-    fileKey: "",
-    id: 1
-  }
-  const movieList: Movie[] = [movie];
+export default async function Home() {
+  const movieList: Movie[] = await fetchFromGateway<Movie[]>("http://localhost:30000/movies");
+  const showList: Show[] = await fetchFromGateway<Show[]>("http://localhost:30000/shows");
 
   return (
      <div>
       <main>
-        <SmallCarousel items={movieList} cardWidth={400} />
+        <SmallCarousel items={movieList} cardWidth={300} />
+        <SmallCarousel items={showList} cardWidth={300} />
       </main>
       <footer>
        

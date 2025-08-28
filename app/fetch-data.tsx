@@ -1,3 +1,5 @@
+import { keysToCamelCase } from "./utils/camel-case";
+
 export async function fetchFromGateway<T>(url: string): Promise<T> {
     const res = await fetch(url, {
         method: 'GET',
