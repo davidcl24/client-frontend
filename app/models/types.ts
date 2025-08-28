@@ -2,7 +2,7 @@ export interface Movie {
     title: string,
     synopsis: string | null,
     length: number | null,
-    release_date: Date | null,
+    releaseDate: Date | null,
     genreId: number | null,
     posterUrl: string | null,
     rating: number | null,

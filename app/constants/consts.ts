@@ -1,0 +1,1 @@
+export const API_GATEWAY_URL: string = process.env.API_GATEWAY_URL || "http://localhost:30000";
