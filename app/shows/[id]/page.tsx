@@ -12,13 +12,13 @@ export default async function ShowsPage({params, searchParams}: {params: {id: st
     const genre: Genre = await fetchFromGateway<Genre>(`${API_GATEWAY_URL}/genres/${show.genreId}`)
     let episodes: Episode[];
     if (selectedSeason) {
-        episodes = await fetchFromGateway<Episode[]>(`${API_GATEWAY_URL}/shows/${id}/${selectedSeason}`)
+        episodes = await fetchFromGateway<Episode[]>(`${API_GATEWAY_URL}/shows/${id}/${selectedSeason}/episodes`)
     } else {
-        episodes = await fetchFromGateway<Episode[]>(`${API_GATEWAY_URL}/shows/${id}/1`)
+        episodes = await fetchFromGateway<Episode[]>(`${API_GATEWAY_URL}/shows/${id}/1/episodes`)
     }
     
     return (
-        <div style={{backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
+        <div style={ show.posterUrl ? {backgroundImage: `url('${show.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{show.title}</h1>
                 <Link href={`/movies/${id}/?watch=true`} className={styles.playButton}>▶ Reproducir</Link>
