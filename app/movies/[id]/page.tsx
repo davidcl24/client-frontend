@@ -3,6 +3,7 @@ import { fetchFromGateway } from "@/app/fetch-data";
 import { Genre, Movie } from "@/app/models/types";
 import styles from '../../content-page.module.css';
 import Link from "next/link";
+import HLSVideo from "@/app/hls-video-parent";
 
 
 export default async function MoviesPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string}}) {
@@ -22,6 +23,16 @@ export default async function MoviesPage({params, searchParams}: {params: {id: s
                 </p>
                 <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
             </div>
+
+            {watch === 'true' && (
+                <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
+                     <HLSVideo
+                        manifest="http://172.26.234.91:8080/vod/planet/master.m3u8"
+                        thumbnailMobile=""
+                        thumbnailDesktop=""
+                    />
+                </div>
+            )}
         </div>
     );
 }

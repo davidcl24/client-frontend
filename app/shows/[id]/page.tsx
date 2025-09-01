@@ -21,7 +21,7 @@ export default async function ShowsPage({params, searchParams}: {params: {id: st
         <div style={ show.posterUrl ? {backgroundImage: `url('${show.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{show.title}</h1>
-                <Link href={`/movies/${id}/?watch=true`} className={styles.playButton}>▶ Reproducir</Link>
+                <Link href={`/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
                 <p className={styles.mediaDescription}>
                     {show.synopsis}
                 </p>
