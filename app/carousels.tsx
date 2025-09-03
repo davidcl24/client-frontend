@@ -82,7 +82,7 @@ export function SmallCarousel({items, cardWidth}: {items: (Movie | Show)[], card
                     <div className={styles.cardBody}>
                         <h3>{it.title}</h3>
                         {it.synopsis && <p>{it.synopsis}</p>}
-                        <Link href={ 'seasonsNum' in it ? `/shows/${it.id}/` : `/movies/${it.id}/` } className={styles.button}>  Ver </Link>
+                        <Link href={ 'seasonsNum' in it ? `/contents/shows/${it.id}/` : `/contents/movies/${it.id}/` } className={styles.button}>  Ver </Link>
                     </div>
                     </article>
                 ))}

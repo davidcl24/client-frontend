@@ -1,7 +1,7 @@
 import { API_GATEWAY_URL } from "@/app/constants/consts";
 import { fetchFromGateway } from "@/app/api-operations";
 import { Episode, Genre, Show } from "@/app/models/types";
-import styles from '../../content-page.module.css';
+import styles from '../../../content-page.module.css';
 import Link from "next/link";
 
 export default async function ShowsPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string}}) {
@@ -21,7 +21,7 @@ export default async function ShowsPage({params, searchParams}: {params: {id: st
         <div style={ show.posterUrl ? {backgroundImage: `url('${show.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{show.title}</h1>
-                <Link href={`/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
+                <Link href={`/contents/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
                 <p className={styles.mediaDescription}>
                     {show.synopsis}
                 </p>
