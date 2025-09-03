@@ -1,6 +1,6 @@
 import { SmallCarousel } from "./carousels";
 import { API_GATEWAY_URL } from "./constants/consts";
-import { fetchFromGateway } from "./fetch-data";
+import { fetchFromGateway } from "./api-operations";
 import { Movie, Show } from "./models/types";
 
 export default async function Home() {

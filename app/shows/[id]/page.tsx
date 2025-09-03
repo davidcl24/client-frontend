@@ -1,5 +1,5 @@
 import { API_GATEWAY_URL } from "@/app/constants/consts";
-import { fetchFromGateway } from "@/app/fetch-data";
+import { fetchFromGateway } from "@/app/api-operations";
 import { Episode, Genre, Show } from "@/app/models/types";
 import styles from '../../content-page.module.css';
 import Link from "next/link";

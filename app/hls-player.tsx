@@ -38,7 +38,7 @@ const HLSPlayer = forwardRef<HTMLVideoElement, Props>(
         }
         }, [manifest]);
 
-        return <video {...props} ref={videoRef} />;
+        return <video {...props} autoPlay ref={videoRef} />;
     }
 );
 

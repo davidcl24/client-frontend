@@ -51,3 +51,24 @@ export interface Genre {
     name: string,
     id: number
 }
+
+export interface User {
+    userName: string,
+    email: string
+}
+
+export interface HistoryElement {
+    id: number,
+    userId: number,
+    movieId: number | null,
+    episodeId: number | null,
+    watchDate: Date,
+    progress: number
+}
+
+export interface FavouriteElement {
+    id: number,
+    userId: number,
+    movieId: number | null,
+    showId: number | null,
+}
