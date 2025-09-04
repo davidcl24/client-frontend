@@ -61,6 +61,37 @@
     background-color: #0088cc;
 }
 
+.starButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    color: white;
+    font-size: 22px;
+}
+
+.starButton::before {
+    
+    position: absolute;
+}
+
+.starButton:hover {
+    background-color: #0088cc;
+    transform: scale(1.1);
+}
+
+.starButton:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
 .mediaDescription {
     font-size: 1.1rem;
     line-height: 1.6;

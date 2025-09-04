@@ -50,3 +50,14 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
     const data = await res.json();
     return keysToCamelCase(data) as T;
 }
+
+export async function deleteToGateway(url: string) {
+    'use server';
+     try {
+        await fetch (url, {
+            method: 'DELETE'
+        });
+    } catch (err) {
+        console.error(err);
+    }
+}
