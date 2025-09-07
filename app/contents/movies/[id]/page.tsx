@@ -35,7 +35,7 @@ export default async function MoviesPage({params, searchParams}: {params: {id: s
                                 'use server';
                                 const favElement: FavouriteElement = {
                                     id: 0,
-                                    userId: 1, //harcodeado, cambiar a coger del payload de jwt
+                                    userId: 1, //hardcodeado, cambiar a coger del payload de jwt
                                     movieId: movie.id,
                                     showId: null
                                 };

@@ -92,6 +92,40 @@
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
 
+.seasonsDropdown {
+    display: block;
+    padding: 0.8rem 1rem;
+    background-color: #00aaff;
+    color: white;
+    font-weight:600;
+    font-size: 1.0rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.seasonsDropdown:hover {
+    background-color: #0088cc;
+}
+
+.seasonsDropdownItem {
+    display: block;
+    padding: 0.8rem 1rem;
+    background-color: #323d43;
+    color: white;
+    font-weight:600;
+    font-size: 1.0rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
 .mediaDescription {
     font-size: 1.1rem;
     line-height: 1.6;
