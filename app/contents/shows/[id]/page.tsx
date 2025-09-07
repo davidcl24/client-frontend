@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ContentFormDropdown } from "@/app/dropdown";
 import { revalidatePath } from "next/cache";
 
-export default async function ShowsPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string}}) {
+export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string}}) {
     const {id} = await params;
     const {watch, selectedSeason} = await searchParams;
 

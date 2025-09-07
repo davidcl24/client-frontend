@@ -7,7 +7,7 @@ import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/api-oper
 import { updateHistory } from "../../history-manager";
 import { revalidatePath } from "next/cache";
 
-export default async function MoviesPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string}}) {
+export default async function MoviePage({params, searchParams}: {params: {id: string}, searchParams: {watch: string}}) {
     const {id} = await params;
     const {watch} = await searchParams;
 
