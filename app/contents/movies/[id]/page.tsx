@@ -29,6 +29,9 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
         <div style={{backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{movie.title}</h1>
+                <p className={styles.mediaDescription}>
+                    {movie.synopsis}
+                </p>
                 <div className="flex items-center gap-4 mb-6">
                     <Link href={`/contents/movies/${id}/?watch=true`} className={styles.playButton}>▶ Reproducir</Link>
                     <form action={ fav === null ? async () => {
@@ -49,9 +52,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                         <button className={styles.starButton} >{fav === null ? "☆" : "★"}</button>
                     </form>
                 </div>
-                <p className={styles.mediaDescription}>
-                    {movie.synopsis}
-                </p>
+                <p className="text-gray-300">{`IMDB ${movie.rating ?? 0}`}</p>
                 <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
             </div>
 

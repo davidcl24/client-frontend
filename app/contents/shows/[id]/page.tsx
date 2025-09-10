@@ -5,10 +5,11 @@ import styles from '../../../content-page.module.css';
 import Link from "next/link";
 import { ContentFormDropdown } from "@/app/dropdown";
 import { revalidatePath } from "next/cache";
+import EpisodesList from "@/app/episodes-list";
 
-export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string}}) {
+export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string, episodeId: string}}) {
     const {id} = await params;
-    const {watch, selectedSeason} = await searchParams;
+    const {watch, selectedSeason, episodeId} = await searchParams;
 
     const show: Show = await fetchFromGateway<Show>(`${API_GATEWAY_URL}/shows/${id}`);
     const genre: Genre = await fetchFromGateway<Genre>(`${API_GATEWAY_URL}/genres/${show.genreId}`)
@@ -30,6 +31,10 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
         <div style={ show.posterUrl ? {backgroundImage: `url('${show.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{show.title}</h1>
+                {show.seasonsNum! > 1 && <ContentFormDropdown options={options}/>}
+                <p className={styles.mediaDescription}>
+                    {show.synopsis}
+                </p>
                 <div className="flex items-center gap-4 mb-6">
                 <Link href={`/contents/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
                     <form action={ fav === null ? async () => {
@@ -50,11 +55,9 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                             <button className={styles.starButton} >{fav === null ? "☆" : "★"}</button>
                     </form>
                 </div>
-                <ContentFormDropdown options={options}/>
-                <p className={styles.mediaDescription}>
-                    {show.synopsis}
-                </p>
+                <p className="text-gray-300">{`IMDB ${show.rating ?? 0}`}</p>
                 <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
+                <EpisodesList episodes={episodes}/>
             </div>
         </div>
     );

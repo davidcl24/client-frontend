@@ -1,0 +1,47 @@
+ .episodeCard {
+      display: flex;
+      gap: 15px;
+      background-color: #1a242f;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 700px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      margin-top: 25;
+}
+
+.episodeCard:hover {
+      transform: scale(1.02);
+}
+
+.episodeThumbnail {
+      width: 200px;
+      height: 120px;
+      object-fit: cover;
+}
+
+.episodeInfo {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+}
+
+.episodeTitle {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+}
+
+.episodeMeta {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 8px;
+ }
+
+.episodeDescription {
+      font-size: 0.85rem;
+      color: #ddd;
+      line-height: 1.3;
+}
