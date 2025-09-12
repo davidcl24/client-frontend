@@ -1,11 +1,13 @@
-import { API_GATEWAY_URL } from "@/app/constants/consts";
+import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
 import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/api-operations";
-import { Episode, FavouriteElement, Genre, Show } from "@/app/models/types";
+import { Episode, FavouriteElement, Genre, HistoryElement, Show } from "@/app/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
 import { ContentFormDropdown } from "@/app/dropdown";
 import { revalidatePath } from "next/cache";
-import EpisodesList from "@/app/episodes-list";
+import { EpisodesList } from "@/app/episodes-list";
+import HLSVideo from "@/app/hls-video-parent";
+import { updateHistory } from "../../history-manager";
 
 export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string, episodeId: string}}) {
     const {id} = await params;
@@ -26,6 +28,12 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
         fav = null;
     }
     const options: number[] = Array.from({ length: show.seasonsNum ?? 0 }, (_, index) => index +1);
+
+    let historyElement: HistoryElement | null = null;
+
+    if (watch === 'true' && episodeId) {
+        historyElement = await updateHistory('episode', 1, parseInt(episodeId)); //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+    }
 
     return (
         <div style={ show.posterUrl ? {backgroundImage: `url('${show.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
@@ -59,6 +67,16 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                 <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
                 <EpisodesList episodes={episodes}/>
             </div>
+
+            {watch === 'true' && (
+                <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
+                     <HLSVideo
+                        manifest={`${STREAMING_URL}/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`} //video hardcodeado, cambiar por el del filekey del episodio
+                        thumbnailMobile=""
+                        thumbnailDesktop=""
+                    />
+                </div>
+            )}
         </div>
     );
     

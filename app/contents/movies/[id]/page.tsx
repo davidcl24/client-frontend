@@ -1,4 +1,4 @@
-import { API_GATEWAY_URL } from "@/app/constants/consts";
+import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
 import { FavouriteElement, Genre, HistoryElement, Movie } from "@/app/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
@@ -22,7 +22,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     let historyElement: HistoryElement | null = null;
 
     if (watch === 'true') {
-        historyElement = await updateHistory('movie', 1, movie.id)
+        historyElement = await updateHistory('movie', 1, movie.id) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
     }
 
     return (
@@ -59,7 +59,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
             {watch === 'true' && (
                 <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
                      <HLSVideo
-                        manifest={`http://172.26.234.91:8080/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`}
+                        manifest={`${STREAMING_URL}/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`} //video hardcodeado, cambiar por el del filekey de la pelicula
                         thumbnailMobile=""
                         thumbnailDesktop=""
                     />
