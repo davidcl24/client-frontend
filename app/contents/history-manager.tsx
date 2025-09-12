@@ -19,7 +19,7 @@ export async function updateHistory(contentType: string, userId: number, content
         }
         if (contentType === 'movie') {
             historyElement.movieId = contentId;
-        } else if (contentType === 'show') {
+        } else if (contentType === 'episode') {
             historyElement.episodeId = contentId;
         }
         await postToGateway(`${API_GATEWAY_URL}/history`, historyElement);
