@@ -71,7 +71,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
             {watch === 'true' && (
                 <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
                      <HLSVideo
-                        manifest={`${STREAMING_URL}/vod/shows/${show.id}/${parseInt(selectedSeason)}/${episodes.find((episode) => episode.id === parseInt(episodeId))?.fileKey}/master.m3u8#t=${historyElement?.progress ?? 0}`} 
+                        manifest={`${STREAMING_URL}/vod/shows/${show.id}/${selectedSeason}/${episodes.find((episode) => episode.id === parseInt(episodeId))?.fileKey}/master.m3u8#t=${historyElement?.progress ?? 0}`} 
                         thumbnailMobile=""
                         thumbnailDesktop=""
                     />
