@@ -46,21 +46,21 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                 <div className="flex items-center gap-4 mb-6">
                 <Link href={`/contents/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
                     <form action={ fav === null ? async () => {
-                                    'use server';
-                                    const favElement: FavouriteElement = {
-                                        id: 0,
-                                        userId: 1, //hardcodeado, cambiar a coger del payload de jwt
-                                        movieId: null,
-                                        showId: show.id
-                                    };
-                                    await postToGateway(`${API_GATEWAY_URL}/favourites`, favElement);
-                                    revalidatePath("/contents/shows")
-                                } : async () => {
-                                    'use server';
-                                    await deleteToGateway(`${API_GATEWAY_URL}/favourites/${fav.id}`)
-                                    revalidatePath("/contents/shows")
-                                }}>
-                            <button className={styles.starButton} >{fav === null ? "☆" : "★"}</button>
+                                'use server';
+                                const favElement: FavouriteElement = {
+                                    id: 0,
+                                    userId: 1, //hardcodeado, cambiar a coger del payload de jwt
+                                    movieId: null,
+                                    showId: show.id
+                                };
+                                await postToGateway(`${API_GATEWAY_URL}/favourites`, favElement);
+                                revalidatePath("/contents/shows")
+                            } : async () => {
+                                'use server';
+                                await deleteToGateway(`${API_GATEWAY_URL}/favourites/${fav.id}`)
+                                revalidatePath("/contents/shows")
+                            }}>
+                        <button className={styles.starButton} >{fav === null ? "☆" : "★"}</button>
                     </form>
                 </div>
                 <p className="text-gray-300">{`IMDB ${show.rating ?? 0}`}</p>
