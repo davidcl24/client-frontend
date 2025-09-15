@@ -11,6 +11,10 @@ export interface Movie {
     id: number
 }
 
+export interface MovieExtended extends Movie {
+    genre: Genre
+}
+
 export interface Show {
     title: string,
     synopsis: string | null,
@@ -21,6 +25,10 @@ export interface Show {
     rating: number | null,
     isPublished: boolean | null,
     id: number | null
+}
+
+export interface ShowExtended extends Show {
+    genre: Genre
 }
 
 export interface Episode {
@@ -54,7 +62,8 @@ export interface Genre {
 
 export interface User {
     userName: string,
-    email: string
+    email: string,
+    role: string
 }
 
 export interface HistoryElement {
