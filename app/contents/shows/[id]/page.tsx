@@ -1,6 +1,6 @@
 import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
 import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/api-operations";
-import { Episode, FavouriteElement, Genre, HistoryElement, Show } from "@/app/models/types";
+import { Episode, FavouriteElement, HistoryElement, ShowExtended } from "@/app/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
 import { ContentFormDropdown } from "@/app/dropdown";
@@ -13,8 +13,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
     const {id} = await params;
     const {watch, selectedSeason, episodeId} = await searchParams;
 
-    const show: Show = await fetchFromGateway<Show>(`${API_GATEWAY_URL}/shows/${id}`);
-    const genre: Genre = await fetchFromGateway<Genre>(`${API_GATEWAY_URL}/genres/${show.genreId}`)
+    const show: ShowExtended = await fetchFromGateway<ShowExtended>(`${API_GATEWAY_URL}/shows/${id}/extended`);
     let episodes: Episode[];
     if (selectedSeason) {
         episodes = await fetchFromGateway<Episode[]>(`${API_GATEWAY_URL}/shows/${id}/${selectedSeason}/episodes`)
@@ -64,7 +63,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                     </form>
                 </div>
                 <p className="text-gray-300">{`IMDB ${show.rating ?? 0}`}</p>
-                <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
+                <Link className={`font-semibold underline`} href={`/genres/${show.genre?.id}/`}>{show.genre?.name}</Link>
                 <EpisodesList episodes={episodes}/>
             </div>
 

@@ -1,5 +1,5 @@
 import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
-import { FavouriteElement, Genre, HistoryElement, Movie } from "@/app/models/types";
+import { FavouriteElement, HistoryElement, MovieExtended } from "@/app/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
 import HLSVideo from "@/app/hls-video-parent";
@@ -11,8 +11,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     const {id} = await params;
     const {watch} = await searchParams;
 
-    const movie: Movie = await fetchFromGateway<Movie>(`${API_GATEWAY_URL}/movies/${id}`);
-    const genre: Genre = await fetchFromGateway<Genre>(`${API_GATEWAY_URL}/genres/${movie.genreId}`)
+    const movie: MovieExtended = await fetchFromGateway<MovieExtended>(`${API_GATEWAY_URL}/movies/${id}/extended`);
     let fav: FavouriteElement | null;
     try {
         fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/1/movie/${movie.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
@@ -53,7 +52,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                     </form>
                 </div>
                 <p className="text-gray-300">{`IMDB ${movie.rating ?? 0}`}</p>
-                <Link className={`font-semibold underline`} href={`/genres/${genre.id}/`}>{genre.name}</Link>
+                <Link className={`font-semibold underline`} href={`/genres/${movie.genre?.id}/`}>{movie.genre?.name}</Link>
             </div>
 
             {watch === 'true' && (
