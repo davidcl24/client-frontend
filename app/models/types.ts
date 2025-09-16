@@ -13,6 +13,7 @@ export interface Movie {
 
 export interface MovieExtended extends Movie {
     genre: Genre
+    directors: Director[]
 }
 
 export interface Show {
@@ -29,6 +30,7 @@ export interface Show {
 
 export interface ShowExtended extends Show {
     genre: Genre
+    directors: Director[]
 }
 
 export interface Episode {
