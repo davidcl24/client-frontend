@@ -10,7 +10,7 @@ export default async function MoviesPage() {
         <div>
             <main>
                 <SmallCarousel items={movieList} cardWidth={300} />
-                <SmallCarousel items={movieList.filter((movie) => movie.genre != null && movie.genre.name === 'Action')} cardWidth={300} />
+                <SmallCarousel items={movieList.filter((movie) => movie.genre?.name === 'Action')} cardWidth={300} />
             </main>
             <footer>
 

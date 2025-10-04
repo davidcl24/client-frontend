@@ -10,7 +10,7 @@ export default async function ShowsPage() {
         <div>
             <main>
                 <SmallCarousel items={showsList} cardWidth={300} />
-                <SmallCarousel items={showsList.filter((show) => show.genre != null && show.genre.name === 'Action')} cardWidth={300} />
+                <SmallCarousel items={showsList.filter((show) => show.genre?.name === 'Action')} cardWidth={300} />
             </main>
             <footer>
 
