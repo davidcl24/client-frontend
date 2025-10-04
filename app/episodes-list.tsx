@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Episode } from "./models/types";
 import styles from "./episode-list.module.css"
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 export function EpisodesList({episodes}: {episodes: Episode[]}) {
