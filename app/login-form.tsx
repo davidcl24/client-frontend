@@ -1,6 +1,6 @@
 import { revalidatePath } from 'next/cache';
 import styles from './form.module.css';
-import { API_GATEWAY_URL } from './constants/consts';
+import { API_GATEWAY_URL } from './(main)/constants/consts';
 
 export async function postFormJson(formData: FormData) {
     'use server';

@@ -1,12 +1,12 @@
-import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
-import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/api-operations";
-import { Episode, FavouriteElement, HistoryElement, ShowExtended } from "@/app/models/types";
+import { API_GATEWAY_URL, STREAMING_URL } from "@/app/(main)/constants/consts";
+import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/(main)/api-operations";
+import { Episode, FavouriteElement, HistoryElement, ShowExtended } from "@/app/(main)/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
-import { ContentFormDropdown } from "@/app/dropdown";
+import { ContentFormDropdown } from "@/app/(main)/dropdown";
 import { revalidatePath } from "next/cache";
-import { EpisodesList } from "@/app/episodes-list";
-import HLSVideo from "@/app/hls-video-parent";
+import { EpisodesList } from "@/app/(main)/episodes-list";
+import HLSVideo from "@/app/(main)/hls-video-parent";
 import { updateHistory } from "../../history-manager";
 
 export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string, episodeId: string}}) {

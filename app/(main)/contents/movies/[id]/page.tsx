@@ -1,9 +1,9 @@
-import { API_GATEWAY_URL, STREAMING_URL } from "@/app/constants/consts";
-import { FavouriteElement, HistoryElement, MovieExtended } from "@/app/models/types";
+import { API_GATEWAY_URL, STREAMING_URL } from "@/app/(main)/constants/consts";
+import { FavouriteElement, HistoryElement, MovieExtended } from "@/app/(main)/models/types";
 import styles from '../../../content-page.module.css';
 import Link from "next/link";
-import HLSVideo from "@/app/hls-video-parent";
-import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/api-operations";
+import HLSVideo from "@/app/(main)/hls-video-parent";
+import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/(main)/api-operations";
 import { updateHistory } from "../../history-manager";
 import { revalidatePath } from "next/cache";
 

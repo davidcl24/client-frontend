@@ -1,7 +1,7 @@
-import { fetchFromGateway } from "@/app/api-operations";
-import { SmallCarousel } from "@/app/carousels";
-import { API_GATEWAY_URL } from "@/app/constants/consts";
-import { MovieExtended } from "@/app/models/types";
+import { fetchFromGateway } from "@/app/(main)/api-operations";
+import { SmallCarousel } from "@/app/(main)/carousels";
+import { API_GATEWAY_URL } from "@/app/(main)/constants/consts";
+import { MovieExtended } from "@/app/(main)/models/types";
 
 export default async function MoviesPage() {
     const movieList: MovieExtended[] = await fetchFromGateway<MovieExtended[]>(`${API_GATEWAY_URL}/movies/extended`);
