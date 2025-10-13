@@ -2,13 +2,14 @@ import { revalidatePath } from 'next/cache';
 import styles from './form.module.css';
 import { API_GATEWAY_URL } from './(main)/constants/consts';
 
-export async function postFormJson(formData: FormData) {
+export async function login(formData: FormData) {
     'use server';
     try {
         const body = Object.fromEntries(formData.entries());
 
         const res = await fetch (`${API_GATEWAY_URL}/login`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 
                 "Content-Type": "application/json"
             },
