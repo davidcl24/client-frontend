@@ -4,6 +4,7 @@ export async function fetchFromGateway<T>(url: string): Promise<T> {
     'use server';
     const res = await fetch(url, {
         method: 'GET',
+        credentials: 'include',
     });
 
     if (!res.ok) {
@@ -19,6 +20,7 @@ export async function postToGateway<T>(url: string, obj: T): Promise<T> {
 
     const res = await fetch(url, {
         method: 'POST',
+        credentials: 'include',
         headers: { 
                 "Content-Type": "application/json"
             },
@@ -38,6 +40,7 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
 
     const res = await fetch(url, {
         method: 'PATCH',
+        credentials: 'include',
         headers: { 
                 "Content-Type": "application/json"
             },
@@ -55,7 +58,8 @@ export async function deleteToGateway(url: string) {
     'use server';
      try {
         await fetch (url, {
-            method: 'DELETE'
+            method: 'DELETE',
+            credentials: 'include',
         });
     } catch (err) {
         console.error(err);
