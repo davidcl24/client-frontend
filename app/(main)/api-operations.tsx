@@ -1,9 +1,29 @@
+import { cookies } from "next/headers";
 import { keysToCamelCase, keysToSnakeCase } from "./utils/camel-case";
+import { log } from "console";
+
+
+async function getCookieHeader() {
+    const cookieStore = await cookies();
+    const allCookies = cookieStore.getAll();
+
+    const relevantCookies = allCookies.filter(cookie => 
+        ['access_token', 'refresh_token'].includes(cookie.name)
+    );
+
+    const cookieHeader = relevantCookies.map(cookie => `${cookie.name}=${cookie.value}`).join('; ');
+    log(cookieHeader);
+    return cookieHeader;
+}
 
 export async function fetchFromGateway<T>(url: string): Promise<T> {
+    'use server';
+    const cookieHeader = await getCookieHeader();
     const res = await fetch(url, {
         method: 'GET',
-        credentials: 'include',
+        headers: {
+            Cookie: cookieHeader || '',
+        }
     });
 
     if (!res.ok) {
@@ -14,13 +34,15 @@ export async function fetchFromGateway<T>(url: string): Promise<T> {
 }
 
 export async function postToGateway<T>(url: string, obj: T): Promise<T> {
+    'use server';
+    const cookieHeader = await getCookieHeader();
     obj = keysToSnakeCase(obj);
 
     const res = await fetch(url, {
         method: 'POST',
-        credentials: 'include',
         headers: { 
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Cookie: cookieHeader || '',
             },
         body: JSON.stringify(obj) 
     });
@@ -33,13 +55,16 @@ export async function postToGateway<T>(url: string, obj: T): Promise<T> {
 }
 
 export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
+    'use server';
+    const cookieHeader = await getCookieHeader();
     obj = keysToSnakeCase(obj);
 
     const res = await fetch(url, {
         method: 'PATCH',
         credentials: 'include',
         headers: { 
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Cookie: cookieHeader || '',
             },
         body: JSON.stringify(obj) 
     });
@@ -52,10 +77,14 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
 }
 
 export async function deleteToGateway(url: string) {
+    'use server';
+    const cookieHeader = await getCookieHeader();
      try {
         await fetch (url, {
             method: 'DELETE',
-            credentials: 'include',
+            headers: {
+                Cookie: cookieHeader || '',
+            }
         });
     } catch (err) {
         console.error(err);
