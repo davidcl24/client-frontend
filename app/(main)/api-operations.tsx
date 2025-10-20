@@ -1,7 +1,6 @@
 import { keysToCamelCase, keysToSnakeCase } from "./utils/camel-case";
 
 export async function fetchFromGateway<T>(url: string): Promise<T> {
-    'use server';
     const res = await fetch(url, {
         method: 'GET',
         credentials: 'include',
@@ -15,7 +14,6 @@ export async function fetchFromGateway<T>(url: string): Promise<T> {
 }
 
 export async function postToGateway<T>(url: string, obj: T): Promise<T> {
-    'use server';
     obj = keysToSnakeCase(obj);
 
     const res = await fetch(url, {
@@ -35,7 +33,6 @@ export async function postToGateway<T>(url: string, obj: T): Promise<T> {
 }
 
 export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
-    'use server';
     obj = keysToSnakeCase(obj);
 
     const res = await fetch(url, {
@@ -55,7 +52,6 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
 }
 
 export async function deleteToGateway(url: string) {
-    'use server';
      try {
         await fetch (url, {
             method: 'DELETE',

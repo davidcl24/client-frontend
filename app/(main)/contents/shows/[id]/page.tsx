@@ -22,7 +22,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
     }
     let fav: FavouriteElement | null;
     try {
-        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/1/show/${show.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/personal/show/${show.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
     } catch {
         fav = null;
     }

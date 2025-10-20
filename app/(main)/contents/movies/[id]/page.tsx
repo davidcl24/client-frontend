@@ -14,7 +14,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     const movie: MovieExtended = await fetchFromGateway<MovieExtended>(`${API_GATEWAY_URL}/movies/${id}/extended`);
     let fav: FavouriteElement | null;
     try {
-        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/1/movie/${movie.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/personal/movie/${movie.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
     } catch {
         fav = null;
     }
