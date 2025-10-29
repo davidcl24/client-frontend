@@ -47,12 +47,11 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                     <form action={ fav === null ? async () => {
                                 'use server';
                                 const favElement: FavouriteElement = {
-                                    id: 0,
-                                    userId: 1, //hardcodeado, cambiar a coger del payload de jwt
+                                    id: 0, 
                                     movieId: null,
                                     showId: show.id
                                 };
-                                await postToGateway(`${API_GATEWAY_URL}/favourites`, favElement);
+                                await postToGateway(`${API_GATEWAY_URL}/favourites/new`, favElement);
                                 revalidatePath("/contents/shows")
                             } : async () => {
                                 'use server';

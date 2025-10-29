@@ -79,7 +79,6 @@ export interface HistoryElement {
 
 export interface FavouriteElement {
     id: number,
-    userId: number,
     movieId: number | null,
     showId: number | null,
 }

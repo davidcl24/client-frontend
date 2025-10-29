@@ -37,11 +37,10 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                                 'use server';
                                 const favElement: FavouriteElement = {
                                     id: 0,
-                                    userId: 1, //hardcodeado, cambiar a coger del payload de jwt
                                     movieId: movie.id,
                                     showId: null
                                 };
-                                await postToGateway(`${API_GATEWAY_URL}/favourites`, favElement);
+                                await postToGateway(`${API_GATEWAY_URL}/favourites/new`, favElement);
                                 revalidatePath("/contents/movies")
                             } : async () => {
                                 'use server';
