@@ -31,7 +31,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
     let historyElement: HistoryElement | null = null;
 
     if (watch === 'true' && episodeId) {
-        historyElement = await updateHistory('episode', 1, parseInt(episodeId)); //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        historyElement = await updateHistory('episode', parseInt(episodeId)); //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
     }
 
     return (

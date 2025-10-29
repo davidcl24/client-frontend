@@ -21,7 +21,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     let historyElement: HistoryElement | null = null;
 
     if (watch === 'true') {
-        historyElement = await updateHistory('movie', 1, movie.id) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        historyElement = await updateHistory('movie', movie.id) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
     }
 
     return (

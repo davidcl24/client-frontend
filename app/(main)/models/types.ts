@@ -70,7 +70,6 @@ export interface User {
 
 export interface HistoryElement {
     id: number,
-    userId: number,
     movieId: number | null,
     episodeId: number | null,
     watchDate: Date,
