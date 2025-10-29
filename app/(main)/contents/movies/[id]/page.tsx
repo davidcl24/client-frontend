@@ -14,14 +14,14 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     const movie: MovieExtended = await fetchFromGateway<MovieExtended>(`${API_GATEWAY_URL}/movies/${id}/extended`);
     let fav: FavouriteElement | null;
     try {
-        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/personal/movie/${movie.id}`) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        fav = await fetchFromGateway<FavouriteElement>(`${API_GATEWAY_URL}/favourites/user/personal/movie/${movie.id}`) 
     } catch {
         fav = null;
     }
     let historyElement: HistoryElement | null = null;
 
     if (watch === 'true') {
-        historyElement = await updateHistory('movie', movie.id) //numero usuario hardcodeao, cambiar por cogerlo del payload del jwt
+        historyElement = await updateHistory('movie', movie.id)
     }
 
     return (
@@ -57,7 +57,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
             {watch === 'true' && (
                 <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
                      <HLSVideo
-                        manifest={`${STREAMING_URL}/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`} //video hardcodeado, cambiar por el del filekey de la pelicula
+                        manifest={`${STREAMING_URL}/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`} //TODO: video hardcodeado, cambiar por el del filekey de la pelicula
                         thumbnailMobile=""
                         thumbnailDesktop=""
                     />

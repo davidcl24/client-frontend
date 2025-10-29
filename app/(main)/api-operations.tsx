@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { keysToCamelCase, keysToSnakeCase } from "./utils/camel-case";
 import { log } from "console";
+import { redirect } from "next/navigation";
 
 
 async function getCookieHeader() {
@@ -27,6 +28,9 @@ export async function fetchFromGateway<T>(url: string): Promise<T> {
     });
 
     if (!res.ok) {
+        if (res.status == 401) {
+            redirect('/login');
+        }
         throw new Error(`Error HTTP: ${res.status}`);
     }
     const data = await res.json();
@@ -48,6 +52,9 @@ export async function postToGateway<T>(url: string, obj: T): Promise<T> {
     });
     
     if (!res.ok) {
+        if (res.status == 401) {
+            redirect('/login');
+        }
         throw new Error(`Error HTTP: ${res.status}`);
     }
     const data = await res.json();
@@ -70,6 +77,9 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
     });
     
     if (!res.ok) {
+        if (res.status == 401) {
+            redirect('/login');
+        }
         throw new Error(`Error HTTP: ${res.status}`);
     }
     const data = await res.json();
@@ -80,12 +90,19 @@ export async function deleteToGateway(url: string) {
     'use server';
     const cookieHeader = await getCookieHeader();
      try {
-        await fetch (url, {
+        const res = await fetch (url, {
             method: 'DELETE',
             headers: {
                 Cookie: cookieHeader || '',
             }
         });
+
+        if (!res.ok) {
+            if (res.status == 401) {
+                redirect('/login');
+            }
+            throw new Error(`Error HTTP: ${res.status}`);
+        }
     } catch (err) {
         console.error(err);
     }
