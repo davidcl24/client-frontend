@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { keysToCamelCase, keysToSnakeCase } from "./utils/camel-case";
-import { log } from "console";
 import { redirect } from "next/navigation";
 
 
@@ -13,7 +12,6 @@ async function getCookieHeader() {
     );
 
     const cookieHeader = relevantCookies.map(cookie => `${cookie.name}=${cookie.value}`).join('; ');
-    log(cookieHeader);
     return cookieHeader;
 }
 
@@ -24,7 +22,8 @@ export async function fetchFromGateway<T>(url: string): Promise<T> {
         method: 'GET',
         headers: {
             Cookie: cookieHeader || '',
-        }
+        },
+        credentials: 'include',
     });
 
     if (!res.ok) {
@@ -47,7 +46,8 @@ export async function postToGateway<T>(url: string, obj: T): Promise<T> {
         headers: { 
                 "Content-Type": "application/json",
                 Cookie: cookieHeader || '',
-            },
+        },
+        credentials: 'include',
         body: JSON.stringify(obj) 
     });
     
@@ -72,7 +72,7 @@ export async function patchToGateway<T>(url: string, obj: T): Promise<T> {
         headers: { 
                 "Content-Type": "application/json",
                 Cookie: cookieHeader || '',
-            },
+        },
         body: JSON.stringify(obj) 
     });
     
@@ -94,7 +94,8 @@ export async function deleteToGateway(url: string) {
             method: 'DELETE',
             headers: {
                 Cookie: cookieHeader || '',
-            }
+            },
+            credentials: 'include',
         });
 
         if (!res.ok) {

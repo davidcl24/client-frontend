@@ -15,6 +15,20 @@ export function ContentFormEmail({ question, value }: { question: string, value:
     );
 }
 
+export function ContentFormUserName({question, value }: {question: string, value:string}) {
+    return (
+        <label className={styles.label}>
+            <input
+                defaultValue={value}
+                className={styles.input}
+                placeholder={question}
+                type='text'
+                name='username'
+            />
+        </label>
+    )
+}
+
 export function ContentFormPassword({ question, value }: { question: string, value: string }) {
     return (
         <label className={styles.label}>

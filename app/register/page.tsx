@@ -1,8 +1,8 @@
 'use client';
-import { ContentFormEmail, ContentFormPassword } from "../login-form";
+import { ContentFormEmail, ContentFormPassword, ContentFormUserName } from "../login-form";
 import styles from '../form.module.css';
 import { useState } from "react";
-import { login } from "../login-operation";
+import { register } from "../login-operation";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -14,12 +14,12 @@ export default function LoginPage() {
 
     const formData = new FormData(e.currentTarget);
 
-    const ok = await login(formData);
+    const ok = await register(formData);
  
     if (ok) {
       window.location.href = '/'; 
     } else {
-      console.error("Error en login");
+      console.error("Error en registro");
     }
 
     setLoading(false);
@@ -28,18 +28,19 @@ export default function LoginPage() {
   return(
     <div>
       <form className={styles.formWrapper} onSubmit={handleSubmit}>
+        <ContentFormUserName question="User" value=""/>
         <ContentFormEmail question="E-mail" value={""}/>
         <ContentFormPassword question="Password" value={""}/>
         <input 
           className={styles.button} 
           type="submit" 
-          value={loading ? 'Cargando...' : 'Iniciar Sesión'} 
+          value={loading ? 'Cargando...' : 'Registrar'} 
           disabled={loading} 
         />
         <br /> <br />
         <div className="text-black">
-             ¿Aún no tienes cuenta? &nbsp;
-            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/register'>Regístrate</Link>
+             ¿Ya tienes cuenta? &nbsp;
+            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/login'>Inicia sesión</Link>
         </div>
       </form>
     </div>
