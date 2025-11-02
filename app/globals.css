@@ -27,6 +27,7 @@ body {
 .navbar-link {
     display: block;
     color: white;
+    font-weight: 500;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
