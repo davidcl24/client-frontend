@@ -7,7 +7,7 @@ export default function MainLayout({
 }>) {
   return (
     <div>
-        <NavBar links={["Home", "Movies", "Shows", "About"]} />
+        <NavBar links={["Home", "Movies", "Shows", "Genres", "User"]} />
         {children}
     </div>
         
