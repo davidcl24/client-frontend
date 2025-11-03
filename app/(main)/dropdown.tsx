@@ -19,7 +19,7 @@ export function ContentFormDropdown({options}: {options: number[]}) {
                     redirect(`${url}?selectedSeason=${e.target.value}`);
                 }}>
                     {options.map((option) => (
-                        <option key={option} className={styles.seasonsDropdownItem} value={option}>{`Temporada ${option}`}</option>
+                        <option key={option} className={styles.seasonsDropdownItem} value={option}>{`Season ${option}`}</option>
                     ))}
         </select>
     )

@@ -31,7 +31,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                 <p className={styles.mediaDescription}>
                     {movie.synopsis}
                 </p>
-                {movie.directors.length > 0 && <div> <span className="font-bold text-xl">Dirección: &nbsp;</span> 
+                {movie.directors.length > 0 && <div> <span className="font-bold text-xl">Direction: &nbsp;</span> 
                     <span>
                         {movie.directors.map((director) => {
                             return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name}</Link>
@@ -41,7 +41,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                 {/* TODO: Hacer lo mismo para actores */}
                 <br />
                 <div className="flex items-center gap-4 mb-6">
-                    <Link href={`/contents/movies/${id}/?watch=true`} className={styles.playButton}>▶ Reproducir</Link>
+                    <Link href={`/contents/movies/${id}/?watch=true`} className={styles.playButton}>▶ Play</Link>
                     <form action={ fav === null ? async () => {
                                 'use server';
                                 const favElement: FavouriteElement = {

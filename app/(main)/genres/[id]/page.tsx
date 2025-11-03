@@ -11,12 +11,12 @@ export default async function GenrePage({params}: {params: {id: string}}) {
         <div>
             {movieList.length > 0 && 
                 <span>
-                    <SmallCarousel items={movieList} cardWidth={300} title="Películas"/>
+                    <SmallCarousel items={movieList} cardWidth={300} title="Movies"/>
                 </span>
             }
             {showList.length > 0 && 
                 <span>
-                    <SmallCarousel items={showList} cardWidth={300} title="Series"/>
+                    <SmallCarousel items={showList} cardWidth={300} title="Shows"/>
                 </span>
             }
         </div>
