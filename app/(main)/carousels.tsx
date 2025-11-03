@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Movie, Show } from "./models/types";
 
 
-export function SmallCarousel({items, cardWidth}: {items: (Movie | Show)[], cardWidth: number}) {
+export function SmallCarousel({items, cardWidth, title}: {items: (Movie | Show)[], cardWidth: number, title?: string}) {
     const scrollerRef = useRef<HTMLDivElement | null>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(false);
@@ -41,6 +41,7 @@ export function SmallCarousel({items, cardWidth}: {items: (Movie | Show)[], card
     };
     return(
         <div className={styles.carouselWrapper}>
+            {title && <h2 className={"text-2xl font-bold text-black mb-2"}>{title}</h2>}
             <button
                 aria-label="Desplazar izquierda"
                 onClick={() => scrollByPage("left")}

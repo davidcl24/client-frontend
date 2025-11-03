@@ -42,6 +42,15 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                 <p className={styles.mediaDescription}>
                     {show.synopsis}
                 </p>
+                {show.directors.length > 0  && <div> <span className="font-bold text-xl">Dirección: &nbsp;</span> 
+                    <span>
+                        {show.directors.map((director) => {
+                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name}</Link>
+                        })}
+                    </span> 
+                </div>}
+                {/* TODO: Hacer lo mismo para actores */}
+                <br />
                 <div className="flex items-center gap-4 mb-6">
                 <Link href={`/contents/shows/${id}/`} className={styles.playButton}>▶ Reproducir</Link>
                     <form action={ fav === null ? async () => {
