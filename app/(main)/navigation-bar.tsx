@@ -2,22 +2,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import GridIcon from "@/public/point-grid.svg";
 import HomeIcon from "@/public/user.svg";
 import Image from "next/image";
-
+import { GenresDropdown } from "./genres-hover-menu";
+import { Genre } from "./models/types";
 
 const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   User: HomeIcon,
-  Genres: GridIcon
 };
 
-export default function NavBar({links}: {links: string[]}) {
+export default function NavBar({links, genres}: {links: string[], genres: Genre[]}) {
     const pathName = usePathname();
 
     return (
-    <ul className="navbar flex">
+    <ul className="navbar flex items-center relative">
       {links.map((link) => {
+        if (link === "Genres") {
+          return (
+            <li key={link} className="ml-auto relative">
+              <GenresDropdown genreList={genres}/>
+            </li>
+          );
+        }
+
         const icon = icons[link];
         const href =
           link === "Home"
@@ -31,20 +38,18 @@ export default function NavBar({links}: {links: string[]}) {
         return (
           <li
             key={link}
-            className={`navbar-element ${active ? "bg-blue-500" : ""} ${
-              link === "Genres" ? "ml-auto" : ""
-            } flex items-center gap-2`}
+            className={`navbar-element ${active ? "bg-blue-500 text-white" : "text-gray-700"} flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors`}
           >
-            <Link href={href} className="group navbar-link flex items-center gap-1 hover:invert-0">
+            <Link href={href} className="group navbar-link flex items-center gap-1">
               {icon ? (
                 <Image
                   src={icon}
                   alt={`${link} icon`}
                   width={20}
                   height={20}
-                  className="inline-block dark:invert group-hover:invert-0"
+                  className="inline-block group-hover:opacity-80"
                 />
-              ): (link)}
+              ) : (link)}
             </Link>
           </li>
         );
