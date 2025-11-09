@@ -44,7 +44,7 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
         href={"/genres"}
         onMouseEnter={openDropdown}
         onMouseLeave={closeDropdown}
-        className="group navbar-link flex items-center gap-1 px-4 py-2 rounded-md hover:bg-white/10 transition-colors"
+        className="group navbar-link flex items-center gap-1 px-4 py-2 hover:bg-white/10"
       >
         <Image
           src={GridIcon}
@@ -65,16 +65,16 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
             className="fixed text-white rounded-2xl shadow-2xl border border-white/10
                        backdrop-blur-2xl z-50 transition-all duration-200"
             style={{
-              top: `${position.top}px`,
-              right: `${position.right}px`,
+              top: `50px`,
+              right: `80px`,
               width: "600px",
               background: "rgba(17, 17, 17, 0.92)",
             }}
           >
             <div className="p-6">
-              <p
+               <p
                 style={{ color: "lightgrey" }}
-                className="font-semibold text-sm uppercase mb-60 tracking-wide"
+                className="font-semibold text-sm uppercase mb-6 tracking-wide"
               >
                 GENRES
               </p>

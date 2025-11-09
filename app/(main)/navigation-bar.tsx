@@ -38,7 +38,7 @@ export default function NavBar({links, genres}: {links: string[], genres: Genre[
         return (
           <li
             key={link}
-            className={`navbar-element ${active ? "bg-blue-500 text-white" : "text-gray-700"} flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 transition-colors`}
+            className={`navbar-element ${active ? "bg-blue-500 text-white" : ""}`}
           >
             <Link href={href} className="group navbar-link flex items-center gap-1">
               {icon ? (
