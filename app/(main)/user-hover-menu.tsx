@@ -3,16 +3,17 @@
 import { useState, useRef } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
-import GridIcon from "@/public/point-grid.svg";
+import UserIcon from "@/public/user.svg";
 import Image from "next/image";
-import { Genre } from "./models/types";
 
-export function GenresDropdown({genreList}: {genreList: Genre[]}) {
+export function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, right: 0 });
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
+
+  const optionList = ["User Settings", "Favourites", "Log Out"]
 
   const updatePosition = () => {
     if (buttonRef.current) {
@@ -40,20 +41,20 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
 
   return (
     <>
-      <Link
-        href={"/genres"}
+      <button
+        ref={buttonRef}
         onMouseEnter={openDropdown}
         onMouseLeave={closeDropdown}
         className="group navbar-link flex items-center gap-1 px-4 py-2 hover:bg-white/10"
       >
         <Image
-          src={GridIcon}
-          alt="Genres icon"
+          src={UserIcon}
+          alt="User icon"
           width={20}
           height={20}
           className="inline-block group-hover:invert"
         />
-      </Link>
+      </button>
 
       {isOpen &&
         typeof document !== "undefined" &&
@@ -66,7 +67,7 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
                        backdrop-blur-2xl z-50 transition-all duration-200"
             style={{
               top: `50px`,
-              right: `80px`,
+              right: `30px`,
               width: "600px",
               background: "rgba(17, 17, 17, 0.92)",
             }}
@@ -76,17 +77,17 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
                 style={{ color: "lightgrey" }}
                 className="font-semibold text-sm uppercase mb-6 tracking-wide"
               >
-                GENRES
+                USER
               </p>
 
               <div className="columns-2 gap-6">
-                {genreList.map((genre) => (
-                  <div key={genre.id} className="break-inside-avoid mb-2">
+                {optionList.map((option) => (
+                  <div key={option.replace(" ", "-").toLowerCase()} className="break-inside-avoid mb-2">
                     <Link
-                      href={`/${genre.id}`}
+                      href={`/genres/${option.replace(" ", "-").toLowerCase()}`}
                       className="block text-gray-300 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition-colors text-sm"
                     >
-                      {genre.name}
+                      {option}
                     </Link>
                   </div>
                 ))}

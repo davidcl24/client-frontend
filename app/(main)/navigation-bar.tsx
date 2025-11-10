@@ -6,6 +6,7 @@ import HomeIcon from "@/public/user.svg";
 import Image from "next/image";
 import { GenresDropdown } from "./genres-hover-menu";
 import { Genre } from "./models/types";
+import { UserDropdown } from "./user-hover-menu";
 
 const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   User: HomeIcon,
@@ -23,6 +24,12 @@ export default function NavBar({links, genres}: {links: string[], genres: Genre[
               <GenresDropdown genreList={genres}/>
             </li>
           );
+        } else if (link === "User") {
+          return (
+            <li key={link} className="relative">
+              <UserDropdown/>
+            </li>
+          )
         }
 
         const icon = icons[link];
@@ -47,7 +54,7 @@ export default function NavBar({links, genres}: {links: string[], genres: Genre[
                   alt={`${link} icon`}
                   width={20}
                   height={20}
-                  className="inline-block group-hover:opacity-80"
+                  className="inline-block group-hover:invert"
                 />
               ) : (link)}
             </Link>
