@@ -4,8 +4,9 @@ import { API_GATEWAY_URL } from "../../constants/consts";
 import { Movie, Show } from "../../models/types";
 
 export default async function GenrePage({params}: {params: {id: string}}) {
-    const showList: Show[] = await fetchFromGateway<Show[]>(`${API_GATEWAY_URL}/genres/${params.id}/shows`);
-    const movieList: Movie[] = await fetchFromGateway<Movie[]>(`${API_GATEWAY_URL}/genres/${params.id}/movies`)
+    const {id} = await params;
+    const showList: Show[] = await fetchFromGateway<Show[]>(`${API_GATEWAY_URL}/genres/${id}/shows`);
+    const movieList: Movie[] = await fetchFromGateway<Movie[]>(`${API_GATEWAY_URL}/genres/${id}/movies`)
 
     return(
         <div>
