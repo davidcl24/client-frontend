@@ -83,7 +83,7 @@ export function GenresDropdown({genreList}: {genreList: Genre[]}) {
                 {genreList.map((genre) => (
                   <div key={genre.id} className="break-inside-avoid mb-2">
                     <Link
-                      href={`/${genre.id}`}
+                      href={`/genres/${genre.id}`}
                       className="block text-gray-300 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition-colors text-sm"
                     >
                       {genre.name}

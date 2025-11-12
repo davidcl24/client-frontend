@@ -84,7 +84,7 @@ export function UserDropdown() {
                 {optionList.map((option) => (
                   <div key={option.replace(" ", "-").toLowerCase()} className="break-inside-avoid mb-2">
                     <Link
-                      href={`/genres/${option.replace(" ", "-").toLowerCase()}`}
+                      href={`/${option.replace(" ", "-").toLowerCase()}`}
                       className="block text-gray-300 hover:text-white hover:bg-white/10 px-3 py-2 rounded transition-colors text-sm"
                     >
                       {option}
