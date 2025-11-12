@@ -1,6 +1,5 @@
 import { fetchFromGateway } from "../api-operations";
 import { API_GATEWAY_URL } from "../constants/consts";
-import { GenreCard } from "../genre-card";
 import { GenreCardGrid } from "../genre-card-grid";
 import { Genre } from "../models/types";
 
