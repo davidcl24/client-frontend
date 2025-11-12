@@ -66,7 +66,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
             {watch === 'true' && (
                 <div className="fixed inset-0 z-5000 bg-black/97 flex items-center justify-center p-4 ">
                      <HLSVideo
-                        manifest={`${STREAMING_URL}/vod/planet/master.m3u8#t=${historyElement?.progress ?? 0}`} //TODO: video hardcodeado, cambiar por el del filekey de la pelicula
+                        manifest={`${STREAMING_URL}/vod/${movie.fileKey}/master.m3u8#t=${historyElement?.progress ?? 0}`} //TODO: video hardcodeado, cambiar por el del filekey de la pelicula
                         thumbnailMobile=""
                         thumbnailDesktop=""
                     />
