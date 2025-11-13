@@ -39,7 +39,7 @@ export default function LogoutPage() {
 
     return(
     <div> 
-      <form className={`${styles.formWrapper}  flex flex-col items-center `} onSubmit={handleSubmit}>
+      <form className={`${styles.formWrapper} flex flex-col items-center`} onSubmit={handleSubmit}>
         <b className='text-black text-xl'>Are you sure you want to log out?</b> <br />
         <input 
           className={`${styles.button} w-48`} 
@@ -48,7 +48,7 @@ export default function LogoutPage() {
           disabled={loading} 
         />
         <br /> <br />
-        <div className="text-black">
+        <div>
             <button className={`${styles.button} w-48`} onClick={handleCancel}>Cancel</button>
         </div>
       </form>
