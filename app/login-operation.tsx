@@ -1,5 +1,4 @@
 'use server';
-import { log } from "console";
 import { API_GATEWAY_URL } from "./(main)/constants/consts";
 import { cookies } from "next/headers";
 
@@ -54,6 +53,28 @@ export async function register(formData: FormData) {
         cookieStore.set({
             name: name,
             value: value,
+            httpOnly: true,
+            path: '/'
+        });
+    }
+    return res.ok;
+}
+
+export async function logout() {
+    const res = await fetch(`${API_GATEWAY_URL}/logout`, {
+        method: 'POST',
+        credentials: 'include',
+    });
+
+    const myCookies = res.headers.getSetCookie();
+
+    for (const cookie of myCookies) {
+        const cookieStore = await cookies();
+        const [name, value] = cookie.split('=');
+        cookieStore.set({
+            name: name,
+            value: value,
+            maxAge: 0,
             httpOnly: true,
             path: '/'
         });

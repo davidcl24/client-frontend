@@ -39,8 +39,8 @@ export default function LoginPage() {
         />
         <br /> <br />
         <div className="text-black">
-             ¿Ya tienes cuenta? &nbsp;
-            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/login'>Inicia sesión</Link>
+             You already have an account? &nbsp;
+            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/login'>Log In</Link>
         </div>
       </form>
     </div>

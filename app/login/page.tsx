@@ -33,13 +33,13 @@ export default function LoginPage() {
         <input 
           className={styles.button} 
           type="submit" 
-          value={loading ? 'Cargando...' : 'Iniciar Sesión'} 
+          value={loading ? 'Loading...' : 'Log In'} 
           disabled={loading} 
         />
         <br /> <br />
         <div className="text-black">
-             ¿Aún no tienes cuenta? &nbsp;
-            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/register'>Regístrate</Link>
+             You don&apos;t have an account yet? &nbsp;
+            <Link className="text-blue-600 dark:text-blue-500 hover:underline" href='/register'>Create one</Link>
         </div>
       </form>
     </div>
