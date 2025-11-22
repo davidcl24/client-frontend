@@ -1,28 +1,20 @@
 # ============================
-# 1) Etapa de dependencias
+# 1) Etapa dependencias
 # ============================
-FROM node:22.17.0-alpine AS deps
+FROM node:22-slim AS deps
 
 WORKDIR /app
-
-# Dependencias necesarias para compilar módulos nativos
-RUN apk add --no-cache --virtual .build-deps \
-    python3 make g++ libc6-compat
 
 COPY package*.json ./
-
-RUN npm install --production=false
+RUN npm install
 
 
 # ============================
-# 2) Etapa de build
+# 2) Etapa build
 # ============================
-FROM node:22.17.0-alpine AS build
+FROM node:22-slim AS build
 
 WORKDIR /app
-
-# Necesario para que Next.js funcione en Alpine
-RUN apk add --no-cache libc6-compat
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -31,17 +23,14 @@ RUN npm run build
 
 
 # ============================
-# 3) Etapa de runtime
+# 3) Etapa runtime
 # ============================
-FROM node:22.17.0-alpine AS runtime
+FROM node:22-slim AS runtime
 
 WORKDIR /app
-
 ENV NODE_ENV=production
 
-RUN apk add --no-cache libc6-compat
-
-COPY --from=build /app/node_modules ./node_modules
+COPY --from=deps /app/node_modules ./node_modules
 COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
 COPY --from=build /app/package*.json ./
