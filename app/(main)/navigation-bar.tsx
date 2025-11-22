@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import HomeIcon from "@/public/user.svg";
+// import HomeIcon from "@/public/user.svg";
 import Image from "next/image";
 import { GenresDropdown } from "./genres-hover-menu";
 import { Genre } from "./models/types";
 import { UserDropdown } from "./user-hover-menu";
 
-const icons: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
-  User: HomeIcon,
+const icons: Record<string, string> = {
+  User: "@/public/user.svg",
 };
 
 export default function NavBar({links, genres}: {links: string[], genres: Genre[]}) {
