@@ -25,7 +25,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
     }
 
     return (
-        <div style={{backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
+        <div style={ movie.posterUrl ? {backgroundImage: `url('${movie.posterUrl}')`} : {backgroundImage: "url('https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg')"}} className={`${styles.container}`}>
             <div className={styles.mediaContent}>
                 <h1 className={styles.mediaTitle}>{movie.title}</h1>
                 <p className={styles.mediaDescription}>
