@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
     ],
     // domains: ['es.web.img3.acsta.net', 'es.web.img2.acsta.net'], // agrega aquí tu host externo
   },
+  output: "standalone",
 };
 
 export default nextConfig;
