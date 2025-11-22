@@ -5,10 +5,12 @@ FROM node:22.17.0-alpine AS deps
 
 WORKDIR /app
 
-# Copiar archivos de dependencias
+# Dependencias necesarias para compilar módulos nativos
+RUN apk add --no-cache --virtual .build-deps \
+    python3 make g++ libc6-compat
+
 COPY package*.json ./
 
-# Instalar dependencias (usa npm, pnpm o yarn)
 RUN npm install --production=false
 
 
@@ -19,10 +21,12 @@ FROM node:22.17.0-alpine AS build
 
 WORKDIR /app
 
+# Necesario para que Next.js funcione en Alpine
+RUN apk add --no-cache libc6-compat
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Compilar Next.js
 RUN npm run build
 
 
@@ -35,18 +39,14 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Copiar dependencias de producción
-COPY package*.json ./
-RUN npm install --only=production
+RUN apk add --no-cache libc6-compat
 
-# Copiar build de Next.js
+COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/.next ./.next
 COPY --from=build /app/public ./public
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/next.config.js ./next.config.js
 COPY --from=build /app/package*.json ./
+COPY --from=build /app/next.config.js ./
 
 EXPOSE 3333
 
-# Next.js en modo producción
 CMD ["npm", "start"]
