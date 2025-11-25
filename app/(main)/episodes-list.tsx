@@ -6,6 +6,11 @@ import styles from "./episode-list.module.css"
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+/**
+ * @summary An HTML component that shows a list of episodes for the ShowPage 
+ * @param episodes - A list of all episodes that should be displayed 
+ * @returns HTML component
+ */
 export function EpisodesList({episodes}: {episodes: Episode[]}) {
     // const value = useSearchParams().get("episodeId")?.toString();
     const url = usePathname();

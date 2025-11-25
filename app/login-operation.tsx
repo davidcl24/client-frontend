@@ -2,6 +2,11 @@
 import { API_GATEWAY_URL } from "./(main)/constants/consts";
 import { cookies } from "next/headers";
 
+/**
+ * @summary Lets the user login into the app
+ * @param formData - The data that comes from the form
+ * @returns HTTP response status code
+ */
 export async function login(formData: FormData) {
     const body = Object.fromEntries(formData.entries());
 
@@ -29,6 +34,11 @@ export async function login(formData: FormData) {
     return res.ok;
 }
 
+/**
+ * @summary Lets the user create a new account
+ * @param formData - The data that comes from the form
+ * @returns HTTP response status code
+ */
 export async function register(formData: FormData) {
     const entries = Object.fromEntries(formData.entries());
 
@@ -60,6 +70,10 @@ export async function register(formData: FormData) {
     return res.ok;
 }
 
+/**
+ * @summary Lets the user logout from the app
+ * @returns HTTP response status code
+ */
 export async function logout() {
     const res = await fetch(`${API_GATEWAY_URL}/logout`, {
         method: 'POST',

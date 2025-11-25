@@ -3,6 +3,11 @@ import { SmallCarousel } from "../../carousels";
 import { API_GATEWAY_URL } from "../../constants/consts";
 import { Movie, Show } from "../../models/types";
 
+/**
+ * @summary A component that shows all of the contents under a specific genre
+ * @param params - ID of the desired genre
+ * @returns HTML component
+ */
 export default async function GenrePage({params}: {params: {id: string}}) {
     const {id} = await params;
     const showList: Show[] = await fetchFromGateway<Show[]>(`${API_GATEWAY_URL}/genres/${id}/shows`);

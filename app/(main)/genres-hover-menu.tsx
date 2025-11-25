@@ -7,6 +7,11 @@ import GridIcon from "@/public/point-grid.svg";
 import Image from "next/image";
 import { Genre } from "./models/types";
 
+/**
+ * @summary An HTML component that shows a dropdown menu of genres when the cursor hovers over it
+ * @param genreList - A list of the genres that should be displayed 
+ * @returns HTML component
+ */
 export function GenresDropdown({genreList}: {genreList: Genre[]}) {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, right: 0 });

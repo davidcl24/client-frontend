@@ -38,6 +38,11 @@ const VideoFallback = ({ thumbnailMobile, thumbnailDesktop }: Props) => (
   </>
 );
 
+/**
+ * @summary The parent HTML component for the HLS video player
+ * @param param - The manifest for the video and the thumbnails that will be displayed in mobile and desktop
+ * @returns HTML component
+ */
 const HLSVideo: React.FC<Props> = ({ manifest, thumbnailMobile, thumbnailDesktop }) => {
   const [video, setVideo] = useState<HTMLVideoElement | null>(null);
 

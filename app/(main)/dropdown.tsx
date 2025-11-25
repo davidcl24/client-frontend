@@ -5,6 +5,11 @@ import { usePathname, useSearchParams } from "next/navigation";
 import styles from './content-page.module.css';
 import { useEffect, useState } from "react";
 
+/**
+ * @summary A component that shows a dropdpwn of the ammount of seasons a show has when clicked on it and redirects to each one of them on click.
+ * @param options - A list of integers to build the options 
+ * @returns 
+ */
 export function ContentFormDropdown({options}: {options: number[]}) {
     const value = useSearchParams().get("selectedSeason")?.toString();
     const [selected, setSelected] = useState(value || "");

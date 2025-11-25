@@ -9,6 +9,11 @@ import { EpisodesList } from "@/app/(main)/episodes-list";
 import HLSVideo from "@/app/(main)/hls-video-parent";
 import { updateHistory } from "../../history-manager";
 
+/**
+ * @summary It shows the detail page of a show. It lets the user watch the episodes.
+ * @param params - The params necessary to show the selected show and to play the selected episode from a specific season
+ * @returns HTML component
+ */
 export default async function ShowPage({params, searchParams}: {params: {id: string}, searchParams: {watch: string, selectedSeason: string, episodeId: string}}) {
     const {id} = await params;
     const {watch, selectedSeason, episodeId} = await searchParams;

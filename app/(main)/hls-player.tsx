@@ -12,6 +12,9 @@ interface Props extends React.HTMLProps<HTMLVideoElement> {
     manifest: string;
 }
 
+/**
+ * @summary The comonent that will manage the video playback
+ */
 const HLSPlayer = forwardRef<HTMLVideoElement, Props>(
     ({ manifest, ...props }, ref) => {
         const videoRef = useRef<HTMLVideoElement>(null);

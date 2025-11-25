@@ -7,7 +7,11 @@ import styles from "./carousels.module.css";
 import Link from "next/link";
 import { Movie, Show } from "./models/types";
 
-
+/**
+ * @summary Displays the shows or movies in a scrollable carousel
+ * @param params - The items that should be dislayed, the width of the card and an optional title that will display over the carousel
+ * @returns HTML component
+ */
 export function SmallCarousel({items, cardWidth, title}: {items: (Movie | Show)[], cardWidth: number, title?: string}) {
     const scrollerRef = useRef<HTMLDivElement | null>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);

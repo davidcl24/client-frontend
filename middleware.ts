@@ -2,6 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { API_GATEWAY_URL } from './app/(main)/constants/consts';
 import { cookies } from 'next/headers';
 
+/**
+ * @summary A middleware that manages the refresh of JWT before every request
+ * @param req - The request made by the client
+ * @returns HTTP response
+ */
 export async function middleware(req: NextRequest) {
     const res = NextResponse.next();
     const accessToken = req.cookies.get('access_token')?.value;

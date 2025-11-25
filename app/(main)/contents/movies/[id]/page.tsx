@@ -7,6 +7,12 @@ import { deleteToGateway, fetchFromGateway, postToGateway } from "@/app/(main)/a
 import { updateHistory } from "../../history-manager";
 import { revalidatePath } from "next/cache";
 
+
+/**
+ * @summary It shows the detail page of a movie. It lets the user watch it
+ * @param params - The params necessary to show the selected movie and to play it
+ * @returns HTML component
+ */
 export default async function MoviePage({params, searchParams}: {params: {id: string}, searchParams: {watch: string}}) {
     const {id} = await params;
     const {watch} = await searchParams;

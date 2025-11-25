@@ -1,6 +1,10 @@
 import styles from './form.module.css';
 
-
+/**
+ * @summary HTML component to input an email 
+ * @param params - Text that will be used as placeholder and default value
+ * @returns HTML component
+ */
 export function ContentFormEmail({ question, value }: { question: string, value: string}) {
     return (
         <label className={styles.label}>
@@ -15,6 +19,11 @@ export function ContentFormEmail({ question, value }: { question: string, value:
     );
 }
 
+/**
+ * @summary HTML component to input an username 
+ * @param params - Text that will be used as placeholder and default value
+ * @returns HTML component
+ */
 export function ContentFormUserName({question, value }: {question: string, value:string}) {
     return (
         <label className={styles.label}>
@@ -29,6 +38,11 @@ export function ContentFormUserName({question, value }: {question: string, value
     )
 }
 
+/**
+ * @summary HTML component to input an password 
+ * @param params - Text that will be used as placeholder and default value
+ * @returns HTML component
+ */
 export function ContentFormPassword({ question, value }: { question: string, value: string }) {
     return (
         <label className={styles.label}>

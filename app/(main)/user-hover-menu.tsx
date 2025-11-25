@@ -6,6 +6,10 @@ import Link from "next/link";
 import UserIcon from "@/public/user.svg";
 import Image from "next/image";
 
+/**
+ * @summary A component that shows a dropdown menu when the cursor is over it
+ * @returns HTML component
+ */
 export function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, right: 0 });

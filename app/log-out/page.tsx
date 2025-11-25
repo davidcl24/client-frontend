@@ -4,6 +4,10 @@ import { useState } from "react";
 import { logout } from "../login-operation";
 import { useRouter } from 'next/navigation';
 
+/**
+ * @summary An HTML form component that will let the user logout from the app
+ * @returns HTML component
+ */
 export default function LogoutPage() {
     const [loading, setLoading] = useState(false);
     const router = useRouter();

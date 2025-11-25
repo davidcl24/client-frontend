@@ -5,6 +5,10 @@ import { useState } from "react";
 import { register } from "../login-operation";
 import Link from "next/link";
 
+/**
+ * @summary An HTML form component that will let the user register into the app
+ * @returns HTML component
+ */
 export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 

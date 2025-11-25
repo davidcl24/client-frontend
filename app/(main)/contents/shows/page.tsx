@@ -3,6 +3,10 @@ import { SmallCarousel } from "@/app/(main)/carousels";
 import { API_GATEWAY_URL } from "@/app/(main)/constants/consts";
 import { ShowExtended } from "@/app/(main)/models/types";
 
+/**
+ * @summary This component shows all of the existing shows
+ * @returns HTML component
+ */
 export default async function ShowsPage() {
     const showsList: ShowExtended[] = await fetchFromGateway<ShowExtended[]>(`${API_GATEWAY_URL}/shows/extended`);
 

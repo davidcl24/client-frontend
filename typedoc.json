@@ -1,0 +1,11 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": ["./app"],
+    "entryPointStrategy": "expand",
+    "out": "./docs",
+    "name": "Client Frontend",
+    "excludeInternal": false,
+    "excludePrivate": false,
+    "tsconfig": "tsconfig.json",
+    "theme": "default"
+}

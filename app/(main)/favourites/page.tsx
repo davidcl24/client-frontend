@@ -3,6 +3,10 @@ import { SmallCarousel } from "../carousels";
 import { API_GATEWAY_URL } from "../constants/consts";
 import { Movie, Show } from "../models/types";
 
+/**
+ * @summary A page that shows all of the contents the current user has added to favourites.
+ * @returns HTML component
+ */
 export default async function FavouritesPage() {
     const favourites: { movies: Movie[], shows: Show[] } = await fetchFromGateway(`${API_GATEWAY_URL}/favourites/user/personal`);
     const showList: Show[] = favourites.shows;

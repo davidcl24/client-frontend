@@ -8,10 +8,17 @@ import { GenresDropdown } from "./genres-hover-menu";
 import { Genre } from "./models/types";
 import { UserDropdown } from "./user-hover-menu";
 
+/**
+ * @summary It stores the option that requires an icon as key and the path where it is store as value
+ */
 const icons: Record<string, string> = {
   User: "@/public/user.svg",
 };
 
+/**
+ * @param params - The keywords that will be used to define most of the links and the list of genres for the genres dropdown component
+ * @returns 
+ */
 export default function NavBar({links, genres}: {links: string[], genres: Genre[]}) {
     const pathName = usePathname();
 
