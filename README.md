@@ -21,6 +21,6 @@ STREAMING_URL=http://localhost:8080
 
 * Run `npm install` to install dependencies
 * Run `npm run build` to build the release
-* Run `node /app/.next/standalone/server.js`
+* Start the app with `node /app/.next/standalone/server.js`
 
 Now the app will be runninng at [`localhost:3333`](http://localhost:30000)
