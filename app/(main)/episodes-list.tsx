@@ -21,7 +21,7 @@ export function EpisodesList({episodes}: {episodes: Episode[]}) {
                     <Image src="https://es.web.img2.acsta.net/pictures/210/179/21017938_20130705161110109.jpg" width={300} height={300} alt="Thumbnail" className={styles.episodeThumbnail}/>
                     <div className={styles.episodeInfo}>
                         <div className={styles.episodeTitle}>{`S${episode.seasonNum} E${episode.episodeNum} - ${episode.title}`}</div>
-                        <div className={styles.episdoeMeta}>{episode.releaseDate? episode.releaseDate.toDateString() : ""}</div>
+                        <div className={styles.episdoeMeta}>{episode.releaseDate? new Date(episode.releaseDate).toDateString() : ""}</div>
                         <div className={styles.episodeDescription}>{episode.synopsis}</div>
                     </div>
                 </div>
