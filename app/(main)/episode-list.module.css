@@ -16,9 +16,10 @@
 }
 
 .episodeThumbnail {
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 120px;
       object-fit: cover;
+      flex-basis: 0;
 }
 
 .episodeInfo {
