@@ -77,7 +77,7 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                 </div>
                 <p className="text-gray-300">{`IMDB ${show.rating ?? 0}`}</p>
                 <Link className={`font-semibold underline`} href={`/genres/${show.genre?.id}/`}>{show.genre?.name}</Link>
-                <EpisodesList episodes={episodes}/>
+                <EpisodesList episodes={episodes} imageUrl={show.posterUrl ? show.posterUrl : ""}/>
             </div>
 
             {watch === 'true' && (
