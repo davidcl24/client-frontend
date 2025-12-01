@@ -40,14 +40,14 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                 {movie.directors.length > 0 && <div> <span className="font-bold text-xl">Direction: &nbsp;</span> 
                     <span>
                         {movie.directors.map((director) => {
-                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name + ' '}</Link>
+                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name + '   '}</Link>
                         })}
                     </span> 
                 </div>}
                 {movie.actors.length > 0 && <div> <span className="font-bold text-xl">Actors: &nbsp;</span> 
                     <span>
                         {movie.actors.map((actor) => {
-                            return <Link className="font-semibold underline" href={`/actors/${actor.id}/`} key={actor.id}>{actor.name + ' '}</Link>
+                            return <Link className="font-semibold underline" href={`/actors/${actor.id}/`} key={actor.id}>{actor.name + '   '}</Link>
                         })}
                     </span> 
                 </div>}
