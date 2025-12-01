@@ -50,14 +50,20 @@ export default async function ShowPage({params, searchParams}: {params: {id: str
                 {show.directors.length > 0  && <div> <span className="font-bold text-xl">Direction: &nbsp;</span> 
                     <span>
                         {show.directors.map((director) => {
-                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name + '   '}</Link>
+                            return (
+                            <> <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name}
+                                </Link>{'   '}</>    
+                            );
                         })}
                     </span> 
                 </div>}
                 {show.actors.length > 0  && <div> <span className="font-bold text-xl">Actors: &nbsp;</span> 
                     <span>
                         {show.actors.map((actor) => {
-                            return <Link className="font-semibold underline" href={`/actors/${actor.id}/`} key={actor.id}>{actor.name + '   '}</Link>
+                            return (
+                            <> <Link className="font-semibold underline" href={`/actors/${actor.id}/`} key={actor.id}>{actor.name}
+                                </Link>{'   '}</>    
+                            );
                         })}
                     </span> 
                 </div>}
