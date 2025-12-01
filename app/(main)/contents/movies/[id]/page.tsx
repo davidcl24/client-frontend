@@ -40,11 +40,17 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                 {movie.directors.length > 0 && <div> <span className="font-bold text-xl">Direction: &nbsp;</span> 
                     <span>
                         {movie.directors.map((director) => {
-                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name}</Link>
+                            return <Link className="font-semibold underline" href={`/directors/${director.id}/`} key={director.id}>{director.name + ' '}</Link>
                         })}
                     </span> 
                 </div>}
-                {/* TODO: Hacer lo mismo para actores */}
+                {movie.actors.length > 0 && <div> <span className="font-bold text-xl">Actors: &nbsp;</span> 
+                    <span>
+                        {movie.actors.map((actor) => {
+                            return <Link className="font-semibold underline" href={`/actors/${actor.id}/`} key={actor.id}>{actor.name + ' '}</Link>
+                        })}
+                    </span> 
+                </div>}
                 <br />
                 <div className="flex items-center gap-4 mb-6">
                     <Link href={`/contents/movies/${id}/?watch=true`} className={styles.playButton}>▶ Play</Link>
@@ -65,6 +71,7 @@ export default async function MoviePage({params, searchParams}: {params: {id: st
                         <button className={styles.starButton} >{fav === null ? "☆" : "★"}</button>
                     </form>
                 </div>
+                <p className="text-gray-300">{`${movie.releaseDate}`}</p>
                 <p className="text-gray-300">{`IMDB ${movie.rating ?? 0}`}</p>
                 <Link className={`font-semibold underline`} href={`/genres/${movie.genre?.id}/`}>{movie.genre?.name}</Link>
             </div>

@@ -8,9 +8,9 @@ import { Movie, Show } from "../../models/types";
  * @param params - ID of the desired director
  * @returns HTML component
  */
-export default async function DirectorPage({params}: {params: {id: string}}) {
-    const showList: Show[] = await fetchFromGateway<Show[]>(`${API_GATEWAY_URL}/directors/${params.id}/shows`);
-    const movieList: Movie[] = await fetchFromGateway<Movie[]>(`${API_GATEWAY_URL}/directors/${params.id}/movies`)
+export default async function ActorPage({params}: {params: {id: string}}) {
+    const showList: Show[] = await fetchFromGateway<Show[]>(`${API_GATEWAY_URL}/actors/${params.id}/shows`);
+    const movieList: Movie[] = await fetchFromGateway<Movie[]>(`${API_GATEWAY_URL}/actors/${params.id}/movies`)
 
     return(
         <div>
