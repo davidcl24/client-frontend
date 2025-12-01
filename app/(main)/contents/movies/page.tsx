@@ -1,7 +1,7 @@
 import { fetchFromGateway } from "@/app/(main)/api-operations";
 import { SmallCarousel } from "@/app/(main)/carousels";
 import { API_GATEWAY_URL } from "@/app/(main)/constants/consts";
-import { MovieExtended } from "@/app/(main)/models/types";
+import { Movie, MovieExtended } from "@/app/(main)/models/types";
 import { randomInt } from "crypto";
 import HeroHeader from "../../hero-header";
 
@@ -11,11 +11,16 @@ import HeroHeader from "../../hero-header";
  */
 export default async function MoviesPage() {
     const movieList: MovieExtended[] = await fetchFromGateway<MovieExtended[]>(`${API_GATEWAY_URL}/movies/extended`);
-
+    const continueWatchingList: { movies: Movie[] }  = await fetchFromGateway(`${API_GATEWAY_URL}/history/user/personal/contents`);
+    const continueWatchingMovieList: Movie[] = continueWatchingList.movies
     return (
         <div>
             <main>
                 <HeroHeader item={movieList[randomInt(0, movieList.length)]}/>
+
+                {continueWatchingMovieList.length > 0 &&
+                <SmallCarousel items={continueWatchingMovieList.slice(0, 5)} cardWidth={300} title="Continue watching"/>}
+
                 {movieList.filter(movie => movie.genre?.name === 'Action').length > 0 &&
                  <SmallCarousel items={movieList.filter(movie => movie.genre?.name === 'Action').sort((movieA, movieB) => {
                     const ratingA = movieA.rating!;
