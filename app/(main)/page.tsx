@@ -2,6 +2,8 @@ import { SmallCarousel } from "./carousels";
 import { API_GATEWAY_URL } from "./constants/consts";
 import { fetchFromGateway } from "./api-operations";
 import { Movie, Show } from "./models/types";
+import HeroHeader from "./hero-header";
+import { randomInt } from "crypto";
 
 /**
  * @summary The component for the home page
@@ -14,9 +16,31 @@ export default async function Home() {
   return (
      <div>
       <main>
-        <SmallCarousel items={movieList} cardWidth={300} />
-        <SmallCarousel items={showList} cardWidth={300} />
-      </main>
+        <HeroHeader item={movieList[randomInt(0, movieList.length)]} />
+        <SmallCarousel items={movieList.sort((movieA, movieB) => {
+          const dateA = new Date(movieA.releaseDate!).getTime();
+          const dateB = new Date(movieB.releaseDate!).getTime();
+          return dateA - dateB;
+        }).reverse().slice(0, 5)} cardWidth={300} title="Latest movies" />
+
+        <SmallCarousel items={showList.sort((showA, showB) => {
+          const dateA = new Date(showA.releaseDate!).getTime();
+          const dateB = new Date(showB.releaseDate!).getTime();
+          return dateA - dateB;
+        }).reverse().slice(0, 5)} cardWidth={300} title="Latest shows"/>
+
+        <SmallCarousel items={movieList.sort((movieA, movieB) => {
+          const ratingA = movieA.rating!;
+          const ratingB = movieB.rating!;
+          return ratingA - ratingB
+        }).reverse().slice(0, 5)} cardWidth={300} title="Best rated movies" />
+
+        <SmallCarousel items={showList.sort((showA, showB) => {
+          const ratingA = showA.rating!;
+          const ratingB = showB.rating!;
+          return ratingA - ratingB
+        }).reverse().slice(0, 5)} cardWidth={300} title="Best rated shows" />
+      </main>    
       <footer>
        
       </footer>

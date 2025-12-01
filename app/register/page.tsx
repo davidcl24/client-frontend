@@ -38,7 +38,7 @@ export default function LoginPage() {
         <input 
           className={styles.button} 
           type="submit" 
-          value={loading ? 'Cargando...' : 'Registrar'} 
+          value={loading ? 'Loading...' : 'Registrar'} 
           disabled={loading} 
         />
         <br /> <br />
