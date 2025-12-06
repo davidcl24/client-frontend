@@ -17,7 +17,7 @@ export function UserDropdown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<number | null>(null);
 
-  const optionList = ["User Settings", "Favourites", "Log Out"]
+  const optionList = ["Favourites", "Log Out"]
 
   const updatePosition = () => {
     if (buttonRef.current) {
